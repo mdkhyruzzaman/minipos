@@ -36,9 +36,13 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('users/{id}/purchases', 'UserSalesController@index')->name('users.purchases');
 
-    Route::get('users/{user_id}/payments', 'UserPaymentsController@index')->name('users.payments');
-    Route::post('users/{user_id}/payments', 'UserPaymentsController@store')->name('users.payments.store');
-    Route::delete('users/{user_id}/payments/{payment_id}', 'UserPaymentsController@destroy')->name('users.payments.destroy');
+    Route::get('users/{id}/payments', 'UserPaymentsController@index')->name('users.payments');
+    Route::post('users/{id}/payments', 'UserPaymentsController@store')->name('users.payments.store');
+    Route::delete('users/{id}/payments/{payment_id}', 'UserPaymentsController@destroy')->name('users.payments.destroy');
+    
+    Route::get('users/{id}/receipts', 'UserReceiptsController@index')->name('users.receipts');
+    Route::post('users/{id}/receipts', 'UserReceiptsController@store')->name('users.receipts.store');
+    Route::delete('users/{id}/receipts/{receipt_id}', 'UserReceiptsController@destroy')->name('users.receipts.destroy');
 
     Route::resource('categories','CategoriesController', ['except'=>['show']]);
 
